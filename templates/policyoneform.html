@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+           <div class="row"><span class="center">בחר מדיניות מתוך הרשימה עבור {{name}}:</span>
+
+            <form action="/policyoneform" method="post">
+            <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> -->
+            <table id="myTable">
+              <thead>
+              <tr class="header" id="myHeader">
+                <th>סימון</th>
+                <th >שם מדיניות</th>
+                <th >תיאור מדיניות</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr>
+                <td><input type="radio" value="1" name="check"></td>
+                <td>מדיניות מחמירה מאוד</td>
+                <td>מדיניות מחמירה מאוד - כל לינק או קובץ מצורף חוסם קבלת מייל </td>
+              </tr>
+              <tr>
+                <td><input type="radio" value="2" name="check"></td>
+                <td>מדיניות מחמירה</td>
+                <td>מדיניות מחמירה - מוחק מהמייל כל קובץ מצורף או לינק </td>
+              </tr>
+              <tr>
+                <td><input type="radio" value="3" name="check"></td>
+                <td>מדיניות סינון מחמירה</td>
+                <td>מדיניות סינון מחמירה - מוחק מהמייל כל קובץ מצורף בעל סיומת בעלת פוטנציאל נזק ומוחקת לינקים לאתרים</td>
+              </tr>
+              <tr>
+                <td><input type="radio" value="4" name="check"></td>
+                <td>מדיניות סינון אתרים</td>
+                <td>מדיניות סינון אתרים - מוסיף התראה על כל קובץ מצורף בעל סיומת בעלת פוטנציאל נזק ומוחקת לינקים לאתרים </td>
+              </tr>
+              <tr>
+                <tr>
+                  <td><input type="radio" value="5" name="check"></td>
+                  <td>מדיניות סינון מאפשרת</td>
+                  <td>מדיניות סינון מאפשרת - מוסיף התראה על אתרים וקבצים מצורפים</td>
+                </tr>
+                <tr>
+                  <td><input type="radio" value="6" name="check"></td>
+                  <td>מדיניות מאפשרת</td>
+                  <td>מדיניות מאפשרת - לא מבצע סינון</td>
+                </tr>
+                <tr>
+            </tbody>
+
+            </table>
+
+          <div class="row">
+                <input type="hidden" name="id" value="{{id}}">
+              <div class="row button" >
+                <input type="submit" value="בחר">
+              </div> </form>
+
+            </div>
+{% endblock %}
