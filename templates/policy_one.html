@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <script>
+        function myFunction() {
+          // Declare variables
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value;
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        </script>
+
+          <div class="row"><span class="center">בחר תיבה מתוך הרשימה:</span>
+
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+            <form method="POST">
+            <table id="myTable">
+              <thead>
+              <tr class="header" id="myHeader">
+                <th>סימון</th>
+                <th >שם פרטי</th>
+                <th >שם משפחה</th>
+                <th >שם תיבה</th>
+                <th >תפקיד</th>
+                <th >מדיניות</th>
+              </tr>
+            </thead>
+            <tbody >
+            {% for row in data %}
+              <tr>
+
+                <td><input type="radio" value="{{row[0]}}" name="check"></td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[5]}}</td>
+                <td>{{row[6]}}</td>
+
+              </tr>
+            {% endfor %}
+            </tbody>
+
+            </table>
+
+          <div class="row">
+
+              <input type="hidden" name="id" value="">
+              <div class="row button" >
+                <input type="submit" value="בחר">
+              </div></div></form></div>
+{% endblock %}
