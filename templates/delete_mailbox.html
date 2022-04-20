@@ -26,7 +26,7 @@
 
         </script>
 
-<div class="row"><h2>Select Mailbox to edit from the list:</h2>
+<div class="row"><h2>Select Mailbox to delete:</h2>
             <input class="form-control me-sm-2" type="text" onkeyup="myFunction()" placeholder="Search" id="myInput">
             <form method="POST">
               <div class="table-responsive">
@@ -62,6 +62,6 @@
 
               <input type="hidden" name="id" value="-1">
               <div class="row">
-                <input class="btn btn-lg btn-primary" type="submit" value="OK">
+                <input class="btn btn-lg btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="This will confirm the mailbox delete" type="submit" value="OK">
               </div></div></form></div>
 {% endblock %}

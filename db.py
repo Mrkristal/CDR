@@ -50,5 +50,19 @@ class DB:
                             "' WHERE(ID = '" + mail_id + "');")
         self.connection.commit()
 
+    def add_mailbox(self, first_name, last_name, mailbox_name, role):
+        self.cursor.execute("INSERT INTO `cdr`.`mailbox` (`FirstName`, `LastName`, `MailBoxName`, `Role`,"
+                            " `PolicyID`) VALUES ('" + first_name + "', '"+last_name+"', '"+mailbox_name +
+                            "', '" + role + "', '1');")
+        self.connection.commit()
+
+    def delete_mailbox(self, mailbox_id):
+        self.cursor.execute("DELETE FROM cdr.mailbox WHERE (ID='" + mailbox_id + "');")
+        self.connection.commit()
+
+    def fetch_reports(self):
+        self.cursor.execute('SELECT * FROM events')
+        return self.cursor.fetchall()
+
     def close(self):
         self.connection.close()

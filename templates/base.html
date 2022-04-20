@@ -26,9 +26,9 @@
                 Mailbox
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Add new Mailbox</a></li>
+                <li><a class="dropdown-item" href="{{url_for('mailbox_add')}}">Add new Mailbox</a></li>
                 <li><a class="dropdown-item" href="{{url_for('mailbox_edit')}}">Edit existing Mailbox</a></li>
-                <li><a class="dropdown-item" href="#">Delete existing Mailbox</a></li>
+                <li><a class="dropdown-item" href="{{url_for('delete_mailbox')}}">Delete existing Mailbox</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -45,9 +45,12 @@
                 Reports
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Show Reports</a></li>
+                <li><a class="dropdown-item" href="{{url_for('reports')}}">Show Reports</a></li>
                 <li><a class="dropdown-item" href="#">Show Logs</a></li>
               </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about') }}">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
