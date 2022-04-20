@@ -26,19 +26,19 @@
 
         </script>
 
-          <div class="row"><span class="center">בחר תיבה מתוך הרשימה:</span>
-
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+<div class="row"><h2>Select Mailbox from the list:</h2>
+            <input class="form-control me-sm-2" type="text" onkeyup="myFunction()" placeholder="Search" id="myInput">
             <form method="POST">
-            <table id="myTable">
+              <div class="table-responsive">
+            <table id="myTable" class="table table-striped table-hover ">
               <thead>
-              <tr class="header" id="myHeader">
-                <th>סימון</th>
-                <th >שם פרטי</th>
-                <th >שם משפחה</th>
-                <th >שם תיבה</th>
-                <th >תפקיד</th>
-                <th >מדיניות</th>
+              <tr id="myHeader">
+                <th>Check</th>
+                <th >First name</th>
+                <th >Last name</th>
+                <th >Mailbox</th>
+                <th >Role</th>
+                <th >Policy</th>
               </tr>
             </thead>
             <tbody >
@@ -50,18 +50,18 @@
                 <td>{{row[2]}}</td>
                 <td>{{row[3]}}</td>
                 <td>{{row[5]}}</td>
-                <td>{{row[6]}}</td>
+                <td>{{policy_list[row[6]-1][1]}}</td>
 
               </tr>
             {% endfor %}
             </tbody>
 
-            </table>
+            </table></div>
 
           <div class="row">
 
-              <input type="hidden" name="id" value="">
-              <div class="row button" >
-                <input type="submit" value="בחר">
+              <input type="hidden" name="id" value="-1">
+              <div class="row">
+                <input class="btn btn-lg btn-primary" type="submit" value="OK">
               </div></div></form></div>
 {% endblock %}
