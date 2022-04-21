@@ -6,6 +6,7 @@ class DB:
         self.connection = mysql.connector.connect(user='root',
                                                   password='Aa123456123456', host='127.0.0.1', database='cdr')
         self.cursor = self.connection.cursor()
+        self.dic_cur = self.connection.cursor(dictionary=True)
         self.is_logged_in = False
 
     def login(self, user, password):
@@ -61,8 +62,8 @@ class DB:
         self.connection.commit()
 
     def fetch_reports(self):
-        self.cursor.execute('SELECT * FROM events')
-        return self.cursor.fetchall()
+        self.dic_cur.execute('SELECT * FROM events')
+        return self.dic_cur.fetchall()
 
     def close(self):
         self.connection.close()

@@ -141,7 +141,6 @@ def delete_mailbox():
         return redirect('/')
     if request.method == 'GET':
         mailbox_data = db.fetch_mailboxes()
-        policy_list = db.fetch_policies()
         return render_template('delete_mailbox.html', title='Delete Mailbox', data=mailbox_data, policy_list=policy_list)
     if request.method == 'POST':
         mail_id = request.form['check']
@@ -163,7 +162,6 @@ def reports():
         mail_id = request.form['check']
         data = db.fetch_mailbox_data(mail_id)
         return render_template('mailbox_edit_form.html', data=data, title='CDR-Edit Mailbox')
-
 
 
 if __name__ == '__main__':
