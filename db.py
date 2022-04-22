@@ -53,7 +53,7 @@ class DB:
 
     def add_mailbox(self, first_name, last_name, mailbox_name, role):
         self.cursor.execute("INSERT INTO `cdr`.`mailbox` (`FirstName`, `LastName`, `MailBoxName`, `Role`,"
-                            " `PolicyID`) VALUES ('" + first_name + "', '"+last_name+"', '"+mailbox_name +
+                            " `PolicyID`) VALUES ('" + first_name + "', '" + last_name + "', '" + mailbox_name +
                             "', '" + role + "', '1');")
         self.connection.commit()
 

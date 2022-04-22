@@ -1,77 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/static/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    {% block javascript %}
+    {% endblock %}
     <title>{{title}}</title>
 
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
         <a href="#" class="navbar-brand"> <img src="/static/logo.png" alt=""></a>
         <a class="navbar-brand" href="{{url_for('index')}}">CDR</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWithDropdown" aria-controls="navbarWithDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWithDropdown"
+                aria-controls="navbarWithDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarWithDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="nav1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Mailbox
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="{{url_for('mailbox_add')}}">Add new Mailbox</a></li>
-                <li><a class="dropdown-item" href="{{url_for('mailbox_edit')}}">Edit existing Mailbox</a></li>
-                <li><a class="dropdown-item" href="{{url_for('delete_mailbox')}}">Delete existing Mailbox</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="nav2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Policy
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="{{url_for('policy_all')}}">Set General Policy</a></li>
-                <li><a class="dropdown-item" href="{{url_for('policy_one')}}">Set Specific Mailbox Policy</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="nav3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Reports
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="{{url_for('reports')}}">Show Reports</a></li>
-                <li><a class="dropdown-item" href="#">Show Logs</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('about') }}">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-            </li>
-          </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="nav1" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Mailbox
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{url_for('mailbox_add')}}">Add new Mailbox</a></li>
+                        <li><a class="dropdown-item" href="{{url_for('mailbox_edit')}}">Edit existing Mailbox</a></li>
+                        <li><a class="dropdown-item" href="{{url_for('delete_mailbox')}}">Delete existing Mailbox</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="nav2" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Policy
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{url_for('policy_all')}}">Set General Policy</a></li>
+                        <li><a class="dropdown-item" href="{{url_for('policy_one')}}">Set Specific Mailbox Policy</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="nav3" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Reports
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{url_for('reports')}}">Show Reports</a></li>
+                        <li><a class="dropdown-item" href="#">Show Logs</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
         </div>
-      </div>
-    </nav>
-    <div class="container">
+    </div>
+</nav>
+<div class="container">
 
-      <div class="card-body">
-          {% block content %}
-          {% endblock %}
-      </div>
-        </div>
+    <div class="card-body">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
 
 
-
-    <div class="fixed-bottom bd-highlight bg-primary text-white">
-        <p class="text-center">CDR project by Elad Kristal and Shahar Hazan</p>
-        </div>
-
-  </body>
+<div class="fixed-bottom bd-highlight bg-primary text-white">
+    <p class="text-center">CDR project by Elad Kristal and Shahar Hazan</p>
+</div>
+{% block script %}
+{% endblock %}
+</body>
 </html>
