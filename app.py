@@ -161,6 +161,15 @@ def reports():
         return render_template('reports.html', title="Show reports", data=data)
 
 
+@app.route('/logs', methods=('GET', 'POST'))
+def logs():
+    if not login_check():
+        return redirect('/')
+    if request.method == 'GET':
+        data = db.fetch_logs()
+        return render_template('logs.html', title="Show logs", data=data)
+
+
 if __name__ == '__main__':
     app.run()
 

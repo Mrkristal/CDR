@@ -65,5 +65,9 @@ class DB:
         self.dic_cur.execute('SELECT * FROM events')
         return self.dic_cur.fetchall()
 
+    def fetch_logs(self):
+        self.dic_cur.execute('SELECT * FROM logs')
+        return self.dic_cur.fetchall()
+
     def close(self):
         self.connection.close()
