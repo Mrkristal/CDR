@@ -1,5 +1,6 @@
 import db
 from flask import *
+import logger
 
 db = db.DB()
 home_txt = "The CDR project is open-source solution for content disarm and reconstruction at Mailboxes.</br> The CDR " \
@@ -102,11 +103,17 @@ def policy_one_form():
     if request.method == 'POST':
         policy = request.form['check']
         mailbox_id = request.form['id']
+        title = "Policy Edit"
+        desc = title + " for mailboxID: " + mailbox_id + " change policy to: " + policy
         try:
             db.update_policy_one(mailbox_id, policy)
-            return render_template('message.html', title="Policy Edit", text='Change Successful')
+            desc += " succeed."
+            logger.logger_events(title, desc, mailbox_id)
+            return render_template('message.html', title=title, text='Change Successful')
         except:
-            return render_template('message.html', title="Policy Edit", text='Error occurred')
+            desc += " failed."
+            logger.logger_events(title, desc, mailbox_id)
+            return render_template('message.html', title=title, text='Error occurred')
 
 
 @app.route('/about', methods=('GET', 'POST'))

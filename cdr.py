@@ -1,5 +1,5 @@
 import time
-
+import logger
 from imbox import Imbox
 import smtplib
 from email.mime.text import MIMEText
@@ -17,6 +17,8 @@ while(True):
             last_mail_uid = int(uid)+1
         print(last_mail_uid)
         print(uid)
+        txt = "new mail uid"
+        logger.logger_logs("got new mail", txt)
         out_message = MIMEMultipart("alternative")
         out_message["cdrApproved"] = "True"
         out_message["Subject"] = message.subject
@@ -35,12 +37,14 @@ while(True):
     # The email client will try to render the last part first
         out_message.attach(part1)
         out_message.attach(part2)
-
+        txt = "from: " + out_message["From"] + " to: " + out_message["To"]
+        logger.logger_logs("cdr functions here", txt)
 
         with smtplib.SMTP(server, 25) as smtp_server:
             smtp_server.login(email, password)
             smtp_server.sendmail(
                 message.sent_from[0]["email"], message.sent_to[0]["email"], out_message.as_string()
             )
+        logger.logger_logs("mail was foreword","mail was delivered")
 
     time.sleep(delay)

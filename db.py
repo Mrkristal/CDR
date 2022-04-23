@@ -77,8 +77,19 @@ class DB:
         data = self.fetch_mailboxes_dic()
         policy = self.fetch_policies()
         for i in range(len(data)):
-            data[i]['PolicyID'] = policy[data[i]['PolicyID']-1][1]
+            data[i]['PolicyID'] = policy[data[i]['PolicyID'] - 1][1]
         return data
+
+    def add_log_event(self, title, description, mail_id, date):
+        self.cursor.execute("INSERT INTO `cdr`.`events` (`title`, `details`, `mailboxid`, `date`) "
+                            "VALUES ('" + title + "', '" + description + "', '" + mail_id +
+                            "', '" + date + "');")
+        self.connection.commit()
+
+    def add_log(self, title, details):
+        txt = "INSERT INTO `cdr`.`logs` (`title`, `details`) VALUES ('" + title + "', '" + details + "');"
+        self.cursor.execute(txt)
+        self.connection.commit()
 
     def close(self):
         self.connection.close()
