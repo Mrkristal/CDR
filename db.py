@@ -69,5 +69,16 @@ class DB:
         self.dic_cur.execute('SELECT * FROM logs')
         return self.dic_cur.fetchall()
 
+    def fetch_mailboxes_dic(self):
+        self.dic_cur.execute('SELECT * FROM mailbox')
+        return self.dic_cur.fetchall()
+
+    def fetch_mailboxes_with_policy(self):
+        data = self.fetch_mailboxes_dic()
+        policy = self.fetch_policies()
+        for i in range(len(data)):
+            data[i]['PolicyID'] = policy[data[i]['PolicyID']-1][1]
+        return data
+
     def close(self):
         self.connection.close()

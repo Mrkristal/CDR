@@ -46,10 +46,10 @@ def mailbox_edit():
     if not login_check():
         return redirect('/')
     if request.method == 'GET':
-        data = db.fetch_mailboxes()
-        return render_template('mailbox_edit.html', title="CDR-Edit Mailbox", data=data, policy_list=policy_list)
+        data = db.fetch_mailboxes_with_policy()
+        return render_template('mailbox_edit.html', title="CDR-Edit Mailbox", data=data)
     else:
-        mail_id = request.form['check']
+        mail_id = request.form['id']
         data = db.fetch_mailbox_data(mail_id)
         return render_template('mailbox_edit_form.html', data=data, title='CDR-Edit Mailbox')
 
@@ -89,10 +89,10 @@ def policy_one():
     if not login_check():
         return redirect('/')
     if request.method == 'GET':
-        data = db.fetch_mailboxes()
-        return render_template('policy_one.html', title='Edit mailbox policy', data=data, policy_list=policy_list)
+        data = db.fetch_mailboxes_with_policy()
+        return render_template('policy_one.html', title='Edit mailbox policy', data=data)
     else:
-        mail_id = request.form['check']
+        mail_id = request.form['id']
         return render_template('policy_one_form.html', id=mail_id, title="Choose wanted policy", data=policy_list)
 
 

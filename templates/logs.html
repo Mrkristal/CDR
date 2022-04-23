@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <div class="row"><h2>Search for logs:</h2>
     <div class="table-responsive">
         <div id="toolbar"></div>
@@ -31,24 +30,19 @@
         </table>
     </div>
 </div>
-
 {% endblock %}
-{% block javascript %}
 
+{% block javascript %}
 <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
 <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
 <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
-
-
 {% endblock %}
+
 {% block script %}
 <script>
     var $table = $('#table')
     $table.bootstrapTable({data: {{data|tojson|safe}}})
-
-
-
 
 </script>
 {% endblock %}
