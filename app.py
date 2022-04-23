@@ -1,4 +1,3 @@
-import logging
 import db
 from flask import *
 
@@ -140,11 +139,10 @@ def delete_mailbox():
     if not login_check():
         return redirect('/')
     if request.method == 'GET':
-        mailbox_data = db.fetch_mailboxes()
-        return render_template('delete_mailbox.html', title='Delete Mailbox', data=mailbox_data,
-                               policy_list=policy_list)
+        mailbox_data = db.fetch_mailboxes_with_policy()
+        return render_template('delete_mailbox.html', title='Delete Mailbox', data=mailbox_data)
     if request.method == 'POST':
-        mail_id = request.form['check']
+        mail_id = request.form['id']
         try:
             db.delete_mailbox(mail_id)
             return render_template('message.html', title="Delete Mailbox", text='Delete Successful')

@@ -4,36 +4,37 @@
 <div class="form-group">
     <h2>Edit mailbox id {{data[0]}}:</h2>
 
-                <form action="/mailbox_edit_form" method="post">
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">First name</label>
-                        <div class="col-sm-10">
-                             <input class="form-control" type="text" name="firstname" value="{{data[1]}}" required>
-                         </div>
-                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Last name</label>
-                        <div class="col-sm-10">
-                            <input class="form-control"  type="text" name="lastname" value="{{data[2]}}" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Mailbox</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="mailbox_name" value="{{data[3]}}" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Role</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="role" value="{{data[5]}}" required>
-                        </div>
-                    </div>
-                    <input type="hidden" name="id" value="{{data[0]}}">
+    <form action="/mailbox_edit_form" method="post">
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">First name</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="firstname" value="{{data[1]}}" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Last name</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="lastname" value="{{data[2]}}" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Mailbox</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="mailbox_name" value="{{data[3]}}" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Role</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="role" value="{{data[5]}}" required>
+            </div>
+        </div>
+        <input type="hidden" name="id" value="{{data[0]}}">
 
 
-          <div class="row">
+        <div class="row">
 
-                  <input class= "btn btn-lg btn-primary" type="submit" value="OK"></div></form>
-              </div>
+            <input class="btn btn-lg btn-primary" type="submit" value="OK"></div>
+    </form>
+</div>
 {% endblock %}
