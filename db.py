@@ -33,6 +33,10 @@ class DB:
         self.cursor.execute('SELECT * FROM mailbox where Id=' + mail_id)
         return self.cursor.fetchone()
 
+    def fetch_mailbox_data_dic(self, mail_id):
+        self.dic_cur.execute('SELECT * FROM mailbox where Id=' + mail_id)
+        return self.dic_cur.fetchone()
+
     def fetch_mailbox_name(self, mail_id):
         self.cursor.execute('SELECT FirstName,LastName FROM mailbox where Id=' + mail_id)
         return self.cursor.fetchone()
@@ -90,6 +94,11 @@ class DB:
         txt = "INSERT INTO `cdr`.`logs` (`title`, `details`) VALUES ('" + title + "', '" + details + "');"
         self.cursor.execute(txt)
         self.connection.commit()
+
+    def get_mailbox_by_mail(self, mailbox):
+        txt = 'SELECT * FROM mailbox where MailBoxName="' + mailbox+'";'
+        self.dic_cur.execute(txt)
+        return self.dic_cur.fetchone()
 
     def close(self):
         self.connection.close()
