@@ -8,9 +8,9 @@ import smtplib
 from email.message import EmailMessage
 from email.mime.application import MIMEApplication
 
-ADMIN_MAIL = 'CDR-admin@localhost.com'
-PASSWORD = '123456'
-SERVER = "localhost"
+ADMIN_MAIL = os.environ.get('ADMIN_MAIL', 'CDR-admin@localhost.com')
+PASSWORD = os.environ.get('ADMIN_PASS', '123456')
+SERVER = os.environ.get('MAIL_SERVER', "localhost")
 BAD_FILETYPES = ['pdf', 'exe', 'doc', 'xls', 'vbs', 'jpeg', 'zip', 'rtf', 'scr']
 
 is_gt = lambda x, y: x if x > y else y

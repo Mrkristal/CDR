@@ -1,13 +1,19 @@
 import mysql.connector
+import os
+
+HOST = os.environ.get('DB_URL', '127.0.0.1')
+DB_USER = os.environ.get('DB_USER', 'root')
+DB_PASS = os.environ.get('DB_PASS', 'Aa123456123456')
+os.environ['LOGGED'] = 'False'
 
 
 class DB:
     def __init__(self):
-        self.connection = mysql.connector.connect(user='root',
-                                                  password='Aa123456123456', host='127.0.0.1', database='cdr')
-        self.cursor = self.connection.cursor()
-        self.dic_cur = self.connection.cursor(dictionary=True)
-        self.is_logged_in = False
+        self.connection = mysql.connector.connect(user=DB_USER,
+                                                  password=DB_PASS, host=HOST, database='cdr')
+        self.cursor = self.connection.cursor(buffered=True)
+        self.dic_cur = self.connection.cursor(dictionary=True, buffered=True)
+        self.is_logged_in = os.environ['LOGGED']
 
     def login(self, user, password):
         if self.is_logged_in:
@@ -17,6 +23,7 @@ class DB:
             admin = self.cursor.fetchone()
             if user == admin[0] and password == admin[1]:
                 self.is_logged_in = True
+                os.environ['LOGGED'] = 'True'
                 return True
             else:
                 return False
@@ -101,7 +108,7 @@ class DB:
         self.connection.commit()
 
     def get_mailbox_by_mail(self, mailbox):
-        txt = 'SELECT * FROM mailbox where MailBoxName="' + mailbox+'";'
+        txt = 'SELECT * FROM mailbox where MailBoxName="' + mailbox + '";'
         self.dic_cur.execute(txt)
         return self.dic_cur.fetchone()
 
