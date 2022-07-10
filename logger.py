@@ -4,8 +4,8 @@ from _datetime import datetime
 log_db = db.DB()
 
 
-def logger_events(title, desc, mail_id):
-    if title and desc and mail_id:
+def logger_events(title, desc, mail_id=0):
+    if title and desc:
         now = datetime.now()
         date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
         log_db.add_log_event(title, desc, mail_id, date_time)

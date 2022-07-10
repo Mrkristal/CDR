@@ -67,11 +67,15 @@ class DB:
 
     def fetch_reports(self):
         self.dic_cur.execute('SELECT * FROM events')
-        return self.dic_cur.fetchall()
+        ret = self.dic_cur.fetchall()
+        self.connection.commit()
+        return ret
 
     def fetch_logs(self):
         self.dic_cur.execute('SELECT * FROM logs')
-        return self.dic_cur.fetchall()
+        ret = self.dic_cur.fetchall()
+        self.connection.commit()
+        return ret
 
     def fetch_mailboxes_dic(self):
         self.dic_cur.execute('SELECT * FROM mailbox')
@@ -85,6 +89,7 @@ class DB:
         return data
 
     def add_log_event(self, title, description, mail_id, date):
+        mail_id = str(mail_id)
         self.cursor.execute("INSERT INTO `cdr`.`events` (`title`, `details`, `mailboxid`, `date`) "
                             "VALUES ('" + title + "', '" + description + "', '" + mail_id +
                             "', '" + date + "');")

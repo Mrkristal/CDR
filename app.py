@@ -62,11 +62,19 @@ def mailbox_edit_form():
         role = request.form['role']
         mailbox_name = request.form['mailbox_name']
         mailbox_id = request.form['id']
+        title= "Mailbox edit"
+        desc = "Edit mailbox id "+mailbox_id+ " to Firstname: "+ firstname+", Lastname: "+lastname+", Mailbox: "+mailbox_name+", Role: "+role+". "
         try:
             db.update_mailbox_info(mailbox_id, firstname, lastname, mailbox_name, role)
-            return render_template('message.html', title="Mailbox edit", text='Change successful')
+            text = 'Change successful'
+            desc+= text
+            logger.logger_events(title, desc)
+            return render_template('message.html', title=title, text=text)
         except:
-            return render_template('message.html', title="Mailbox edit", text='An Error occurred')
+            text = 'An Error occurred'
+            desc += text
+            logger.logger_events(title, desc)
+            return render_template('message.html', title=title, text=text)
 
 
 @app.route('/policy_all', methods=('GET', 'POST'))
@@ -77,10 +85,16 @@ def policy_all():
         return render_template('policy_all.html', title='General policy edit', data=policy_list)
     if request.method == 'POST':
         policy = request.form['check']
+        title = "Policy Edit for all mailboxes"
+        desc = title + " - change policy to: " + policy
         try:
             db.update_policy_all(policy)
+            desc += " succeed"
+            logger.logger_events(title, desc)
             return render_template('message.html', title="General Policy Edit", text='Changed Successful')
         except:
+            desc += " failed"
+            logger.logger_events(title, desc)
             return render_template('message.html', title="General Policy Edit", text='Error occurred')
 
 
@@ -132,11 +146,18 @@ def mailbox_add():
         lastname = request.form['lastname']
         role = request.form['role']
         mailbox_name = request.form['mailbox_name']
+        title = "Mailbox add"
         try:
             db.add_mailbox(firstname, lastname, mailbox_name, role)
-            return render_template('message.html', title="Mailbox add", text='Created successfully')
+            text = 'Created successfully'
+            desc = title + " " + mailbox_name + " " + text
+            logger.logger_events(title, desc)
+            return render_template('message.html', title=title, text=text)
         except:
-            return render_template('message.html', title="Mailbox add", text='An Error occurred')
+            text = 'An Error occurred'
+            desc = title + " " + mailbox_name + " " + text
+            logger.logger_events(title, desc)
+        return render_template('message.html', title=title, text=text)
     else:
         return render_template('mailbox_add.html', title="Add new Mailbox")
 
@@ -150,11 +171,18 @@ def delete_mailbox():
         return render_template('delete_mailbox.html', title='Delete Mailbox', data=mailbox_data)
     if request.method == 'POST':
         mail_id = request.form['id']
+        title = "Delete Mailbox"
         try:
             db.delete_mailbox(mail_id)
-            return render_template('message.html', title="Delete Mailbox", text='Delete Successful')
+            text = 'Delete Successful'
+            desc = title + " id: " + mail_id + " " + text
+            logger.logger_events(title, desc)
+            return render_template('message.html', title=title, text=text)
         except:
-            return render_template('message.html', title="Delete Mailbox", text='Error occurred')
+            text = 'An Error occurred'
+            desc = title + " id: " + mail_id + " " + text
+            logger.logger_events(title, desc)
+            return render_template('message.html', title=title, text=text)
 
 
 @app.route('/reports', methods=('GET', 'POST'))
@@ -171,7 +199,7 @@ def logs():
     if not login_check():
         return redirect('/')
     if request.method == 'GET':
-        data = db.fetch_logs()
+        data = db.fetch_logs( )
         return render_template('logs.html', title="Show logs", data=data)
 
 
