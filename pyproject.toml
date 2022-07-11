@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "Open_CDR"
-version = "1.0.0"
+version = "1.0.1"
 authors = [
   { name="Elad Kristal", email="kristal123@gmail.com" },
   { name="Shahar Hazan", email="shaharhazan110@gmail.com"},
