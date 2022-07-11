@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Open_CDR"
+version = "1.0.0"
+authors = [
+  { name="Elad Kristal", email="kristal123@gmail.com" },
+  { name="Shahar Hazan", email="shaharhazan110@gmail.com"},
+]
+description = "An Open Source CDR Project"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Mrkristal/CDR"
+"Bug Tracker" = "https://github.com/Mrkristal/CDR/issues"
+
+[tool.setuptools.packages.find]
+where = [""]
