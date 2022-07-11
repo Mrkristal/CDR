@@ -8,7 +8,7 @@ import smtplib
 from email.message import EmailMessage
 from email.mime.application import MIMEApplication
 
-ADMIN_MAIL = os.environ.get('ADMIN_MAIL', 'CDR-admin@localhost.com')
+ADMIN_MAIL = os.environ.get('ADMIN_MAIL', 'CDR@localhost')
 PASSWORD = os.environ.get('ADMIN_PASS', '123456')
 SERVER = os.environ.get('MAIL_SERVER', "localhost")
 BAD_FILETYPES = ['pdf', 'exe', 'doc', 'xls', 'vbs', 'jpeg', 'zip', 'rtf', 'scr']
@@ -24,6 +24,8 @@ def get_policy_actions_by_id(policy_id):
         "add_alert": False,
         "filtering": False
     }
+    if policy_id == 0:
+        return actions
     if policy_id <= 5:
         actions["add_alert"] = True
     if 4 >= policy_id >= 3:
@@ -73,7 +75,8 @@ def remove_attachment(mail_content, filter=False):
 
 
 def filter_content(mail_content):
-    f_url = open('static/url_blocklist.json', 'r')
+    path = os.path.join(os.path.dirname(__file__), 'static', 'url_blocklist.json')
+    f_url = open(path, 'r')
     blocklist = json.load(f_url)
     f_url.close()
     soup = BeautifulSoup(mail_content['body']['html'][0], 'html.parser')
@@ -107,7 +110,7 @@ def format_mail_to_send(mail_content):
             file_name = attachment.get('filename')
             maintype, subtype = attachment['content-type'].split('/', 1)
             dec_data = base64.b64decode(data.get_payload())
-            full_path = "downloads/" + file_name
+            full_path = os.path.join(os.path.dirname(__file__), file_name)
             fb = open(full_path, "wb")
             fb.write(dec_data)
             fb.close()
@@ -170,6 +173,7 @@ class MailHandler:
             self.mail.delete(uid)
 
     def get_policy_for_mailbox(self, mailbox):
+        self.db.clear()
         data = self.db.get_mailbox_by_mail(mailbox)
         if data:
             return data['PolicyID']

@@ -3,7 +3,7 @@ import os
 
 HOST = os.environ.get('DB_URL', '127.0.0.1')
 DB_USER = os.environ.get('DB_USER', 'root')
-DB_PASS = os.environ.get('DB_PASS', 'Aa123456123456')
+DB_PASS = os.environ.get('DB_PASS', '123456')
 os.environ['LOGGED'] = 'False'
 
 
@@ -114,3 +114,6 @@ class DB:
 
     def close(self):
         self.connection.close()
+
+    def clear(self):
+        self.connection.commit();
