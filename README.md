@@ -32,8 +32,8 @@ This project consisting of:
   
   Second rule:
   
-  <a href="https://imgur.com/r7X7RRc"><img src="https://i.imgur.com/r7X7RRc.png" title="source: imgur.com" /></a>
-  
+  <a href="https://imgur.com/a/R8eiuLS"><img src="https://i.imgur.com/UEqwUpO.png" title="source: imgur.com" /></a>
+
 # Installation and Configuration
 1. Clone repo:
 > git clone https://github.com/Mrkristal/CDR.git
