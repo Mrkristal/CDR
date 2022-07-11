@@ -38,8 +38,13 @@ This project consisting of:
 1. Clone repo:
 > git clone https://github.com/Mrkristal/CDR.git
 
-2. Install requirements:
-> pip install requirements.txt
+2. Edit Dockerfile with your database and mailserver info with the ENV variables in the Dockerfile.
+
+3. Build Docker images:
+> docker compose build
+
+4. run Docker containers:
+> docker  compose up
 
 
 

@@ -7,6 +7,7 @@ RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 COPY ./ /app
 
 ENV DB_URL=host.docker.internal
+ENV MAIL_SERVER=host.docker.internal
 #The ENV Variables:
 #DB_PASS - password to the database
 #DB_URL - the url to the database
@@ -14,3 +15,4 @@ ENV DB_URL=host.docker.internal
 #ADMIN_MAIL - the admin mailbox for processing
 #ADMIN_PASS - the admin password
 #MAIL_SERVER - the mail server
+
