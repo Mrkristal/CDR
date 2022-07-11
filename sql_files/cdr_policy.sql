@@ -12,3 +12,9 @@ CREATE TABLE `policy` (
   `Details` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `policy` WRITE;
+/*!40000 ALTER TABLE `policy` DISABLE KEYS */;
+INSERT INTO `policy` VALUES (1,'Very Strict ','Block any suspicius email and send an alert.'),(2,'Strict','Remove any URLs and attachments.'),(3,'strict filtering','Filtering any URLs and known problematic file types Attachments.'),(4,'Blocklist filtering','Filtering URLs for known blacklist sites and known problematic file types.'),(5,'Alert policy','Add an alert on any possible threat'),(6,'None','Not filtering at all.');
+/*!40000 ALTER TABLE `policy` ENABLE KEYS */;
+UNLOCK TABLES;
