@@ -1,4 +1,4 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.10
+FROM python:3
 
 COPY ./requirements.txt /app/requirements.txt
 
@@ -8,6 +8,8 @@ COPY ./ /app
 
 ENV DB_URL=host.docker.internal
 ENV MAIL_SERVER=host.docker.internal
+ENV ADMIN_MAIL=CDR-admin@localhost.com
+ENV ADMIN_PASS=123456
 #The ENV Variables:
 #DB_PASS - password to the database
 #DB_URL - the url to the database
