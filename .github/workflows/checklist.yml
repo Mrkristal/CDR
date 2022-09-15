@@ -9,3 +9,5 @@ jobs:
       - uses: mheap/require-checklist-action@v1
         with:
           requireChecklist: true # If this is true and there are no checklists detected, the action will fail
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
