@@ -2,6 +2,8 @@ import db
 from flask import *
 import logger
 
+
+
 db = db.DB()
 home_txt = "The CDR project is open-source solution for content disarm and reconstruction at Mailboxes.</br> The CDR " \
            "works by processing all incoming e-mails in a specific network, deconstructing them, and removing the " \
