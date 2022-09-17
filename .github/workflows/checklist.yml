@@ -3,9 +3,11 @@ on:
   pull_request:
     types: [opened, edited, synchronize]
 jobs:
-  checklist:
+  job1:
     runs-on: ubuntu-latest
     steps:
-      - uses: kentaro-m/task-completed-checker-action@v0.1.0
+      - uses: mheap/require-checklist-action@v1
+        with:
+          requireChecklist: true # If this is true and there are no checklists detected, the action will fail
         env:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
