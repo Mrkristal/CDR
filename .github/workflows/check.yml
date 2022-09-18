@@ -1,13 +1,12 @@
-name: Require Checklist
+name: 'PR Tasks Completed Check'
 on:
   pull_request:
     types: [opened, edited, synchronize]
+
 jobs:
-  checklist:
+  task-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: mheap/require-checklist-action@v1
+      - uses: macqueenism/required-task-checker-action@v0.2.1
         with:
-          requireChecklist: true # If this is true and there are no checklists detected, the action will fail
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
