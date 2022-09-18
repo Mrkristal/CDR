@@ -8,7 +8,7 @@
 ### The basics:
 - [ ] <!--- required -->Review the commits and make sure they are aligned with what you are planning to merge.
 - [ ] <!--- required -->Check that no weird commits “slipped” into the merge due to human error.
-- [ ] <!--- required -->Go over briefly on the “File Changed” and make sure the files are aligned with what you expect
+- [ ] <!--- required -->Go over briefly on the “File Changed” and make sure the files are aligned with what you expect.
 - [ ] <!--- required -->Ensure that “All checks have passed”, that should include:
     - Build
     - Unit tests
@@ -25,6 +25,6 @@
 
 ### In case this is a “hotfix” merge:
 ###### (this is optional)
-- [ ] Validate there is a PR merged in “develop” with the same changes
-- [ ] Validate the change was properly tested in “app-test”
-- [ ] The code was reviewed and approved
+- [ ] Validate there is a PR merged in “develop” with the same changes.
+- [ ] Validate the change was properly tested in “app-test”.
+- [ ] The code was reviewed and approved.
