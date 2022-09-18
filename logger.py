@@ -4,6 +4,7 @@ from _datetime import datetime
 log_db = db.DB()
 
 
+
 def logger_events(title, desc, mail_id=0):
     if title and desc:
         now = datetime.now()
