@@ -2,6 +2,7 @@ import db
 from flask import *
 import logger
 
+
 db = db.DB()
 home_txt = "The CDR project is open-source solution for content disarm and reconstruction at Mailboxes.</br> The CDR " \
            "works by processing all incoming e-mails in a specific network, deconstructing them, and removing the " \
@@ -62,12 +63,12 @@ def mailbox_edit_form():
         role = request.form['role']
         mailbox_name = request.form['mailbox_name']
         mailbox_id = request.form['id']
-        title= "Mailbox edit"
-        desc = "Edit mailbox id "+mailbox_id+ " to Firstname: "+ firstname+", Lastname: "+lastname+", Mailbox: "+mailbox_name+", Role: "+role+". "
+        title = "Mailbox edit"
+        desc = "Edit mailbox id " + mailbox_id + " to Firstname: " + firstname + ", Lastname: " + lastname + ", Mailbox: " + mailbox_name + ", Role: " + role + ". "
         try:
             db.update_mailbox_info(mailbox_id, firstname, lastname, mailbox_name, role)
             text = 'Change successful'
-            desc+= text
+            desc += text
             logger.logger_events(title, desc)
             return render_template('message.html', title=title, text=text)
         except:
@@ -199,10 +200,9 @@ def logs():
     if not login_check():
         return redirect('/')
     if request.method == 'GET':
-        data = db.fetch_logs( )
+        data = db.fetch_logs()
         return render_template('logs.html', title="Show logs", data=data)
 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
-
