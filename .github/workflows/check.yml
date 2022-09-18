@@ -1,4 +1,4 @@
-name: 'PR Tasks Completed Check'
+name: PR Checklist validator
 on:
   pull_request:
     types: [opened, edited, synchronize]
@@ -7,6 +7,6 @@ jobs:
   task-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: Mrkristal/required-task-checker-action@0.0.1
+      - uses: Mrkristal/require-checklist-action@v0.0.1
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
