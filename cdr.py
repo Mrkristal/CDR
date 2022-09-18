@@ -18,4 +18,3 @@ while True:
         logger.logger_logs("Mail id:" + uid + " delivered", "CDR completed the processing.")
     mail.clear_mailbox()
     time.sleep(delay)
-
