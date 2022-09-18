@@ -7,6 +7,7 @@ delay = 5
 last_time_checked = datetime.datetime.now()
 mail = mail_handler.MailHandler()
 
+
 while True:
     message = mail.fetch_mails()
     for m in message:
