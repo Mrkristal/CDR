@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: Mrkristal/require-checklist-action@v0.0.1
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
