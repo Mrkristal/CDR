@@ -6,15 +6,13 @@
 - [ ] :rocket: "Big Deploy" (from develop / from preprod)
 
 ### The basics:
-<!-- required-tasks -->
-- [ ] Review the commits and make sure they are aligned with what you are planning to merge.
-- [ ] Check that no weird commits “slipped” into the merge due to human error.
-- [ ] Go over briefly on the “File Changed” and make sure the files are aligned with what you expect
-- [ ] Ensure that “All checks have passed”, that should include:
+- [ ] <!--- required -->Review the commits and make sure they are aligned with what you are planning to merge.
+- [ ] <!--- required -->Check that no weird commits “slipped” into the merge due to human error.
+- [ ] <!--- required -->Go over briefly on the “File Changed” and make sure the files are aligned with what you expect
+- [ ] <!--- required -->Ensure that “All checks have passed”, that should include:
     - Build
     - Unit tests
     - Automated tests
-<!-- /required-tasks -->
 
 ### In case the version includes a new service:
 ###### (this is optional)
