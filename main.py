@@ -18,7 +18,6 @@ def login_check():
     return db.is_logged_in
 
 
-
 @app.route('/index')
 def index():
     return render_template("message.html", title=home_title, text=home_txt, header=header_txt)
