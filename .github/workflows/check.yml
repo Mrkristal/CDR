@@ -7,6 +7,6 @@ jobs:
   task-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: Mrkristal/require-checklist-action@v0.0.1
+      - uses: Mrkristal/require-checklist-action@v0.0.2
         with:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
