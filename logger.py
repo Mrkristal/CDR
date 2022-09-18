@@ -14,6 +14,7 @@ def logger_events(title, desc, mail_id=0):
         return False
 
 
+
 def logger_logs(title, details):
     if title and details:
         now = datetime.now()
